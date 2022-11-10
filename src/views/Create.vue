@@ -1,5 +1,5 @@
 <template>
-<form>
+<form @submit.prevent="addPost">
   <label for="">Title</label>
   <input type="text" required v-model="title">
 
@@ -30,8 +30,24 @@ export default {
             }
             tag.value = ""
         }
+        
+        let addPost=async()=>{
+            await fetch("http://localhost:3000/posts",{
+                method:"POST",
+                headers:{
+                    "Content-type" : "application/json"
+                },
+                body:JSON.stringify(
+                {
+                    title : title.value,
+                    body : body.value,
+                    tags : tags.value
+                }
+                )
+            })
+        }
 
-        return {title,body,tag,handlekeydown,tags}
+        return {title,body,tag,handlekeydown,tags,addPost}
     }
 }
 </script>

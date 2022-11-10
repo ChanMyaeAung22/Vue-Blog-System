@@ -1,5 +1,6 @@
 <template>
-<div v-if="error">
+<div class="home">
+  <div v-if="error">
   {{error}}
 </div>
 <div v-if="posts.length>0">
@@ -7,6 +8,7 @@
 </div>
 <div v-else>
  <Spinner></Spinner>
+</div>
 </div>
 </template>
 
@@ -31,8 +33,9 @@ export default {
 }
 </script>
 <style>
-.input{
-  margin:20px auto;
-  border-inline-color: #eee;
-  }
+.home{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 10px;
+}
 </style>

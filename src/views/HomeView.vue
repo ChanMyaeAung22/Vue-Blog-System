@@ -6,11 +6,12 @@
   <PostsLitst :posts="posts"></PostsLitst>
 </div>
 <div v-else>
-  loading...
+ <Spinner></Spinner>
 </div>
 </template>
 
 <script>
+import Spinner from '../components/Spinner'
 import PostsLitst from '../components/PostsLitst'
 import { computed, ref } from '@vue/reactivity'
 import getPosts from '../composables/getPosts'
@@ -18,7 +19,8 @@ import getPosts from '../composables/getPosts'
 
 
 export default {
-  components: { PostsLitst },
+  components: {
+    Spinner, PostsLitst },
  
   setup(){
     // destructing & composable

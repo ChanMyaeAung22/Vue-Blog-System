@@ -21,6 +21,7 @@ export default {
   components: { PostsLitst },
  
   setup(){
+    // destructing & composable
     let {posts,error,load} = getPosts()
     load();
     return {posts,error}

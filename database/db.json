@@ -24,6 +24,22 @@
         "laravel"
       ],
       "id": 6
+    },
+    {
+      "title": "world news",
+      "body": "world news",
+      "tags": [
+        "news"
+      ],
+      "id": 7
+    },
+    {
+      "title": "Angular",
+      "body": "Angular",
+      "tags": [
+        "angular"
+      ],
+      "id": 8
     }
   ]
 }

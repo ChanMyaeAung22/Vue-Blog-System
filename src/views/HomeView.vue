@@ -5,10 +5,10 @@
 </div>
 <div v-if="posts.length>0" class="layout">
   <div>
-    <PostsLitst :posts="posts"></PostsLitst>
+    <PostsList :posts="posts"></PostsList>
   </div>
   <div>
-    <TagCloud></TagCloud>
+    <TagCloud :posts="posts"></TagCloud>
   </div>
 </div>
 <div v-else>
@@ -20,8 +20,7 @@
 <script>
 import TagCloud from '../components/TagCloud'
 import Spinner from '../components/Spinner'
-import PostsLitst from '../components/PostsLitst'
-import { computed, ref } from '@vue/reactivity'
+import PostsList from '../components/PostsList'
 import getPosts from '../composables/getPosts'
 
 
@@ -29,7 +28,7 @@ import getPosts from '../composables/getPosts'
 export default {
   components: {
     TagCloud,
-    Spinner, PostsLitst },
+    Spinner, PostsList },
  
   setup(){
     // destructing & composable

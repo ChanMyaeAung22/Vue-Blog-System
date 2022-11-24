@@ -1,23 +1,23 @@
 import { ref } from "vue";
+import {db} from "../firebase/config"
+import { collection,getDocs } from 'firebase/firestore/lite';
 
 let getPosts=()=>{
-    let posts = ref([]);
-    let error = ref("")
-    let load=async()=>{
-      try{
-        // await new Promise((resolve,reject)=>{
-        //   setTimeout(resolve,2000)
-        // })
-         let response = await fetch(" http://localhost:3000/posts")
-         if(response.status === 404){
-          throw new Error("Not found url")
+    let posts=ref([]);
+      let error=ref("");
+      let load=async()=>{
+         try{
+            //firebase collection fetch
+            let collResponse = collection(db,'posts');
+            let documents = await getDocs(collResponse);
+            posts.value = documents.docs.map(doc=>{
+               return {id:doc.id,...doc.data()};
+            })
+         }catch(err){
+            // console.log(error.message)
+            error.value=err.message;
          }
-         let datas = await response.json()
-         posts.value = datas
-      }catch(err){
-        error.value = err.message
       }
-    }
-    return {posts,error,load}
+      return {posts,error,load};
 }
 export default getPosts;

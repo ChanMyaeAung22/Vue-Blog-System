@@ -1,7 +1,5 @@
-import {initializeApp} from 'firebase/app'
-import { getFirestore,collection,getDocs} from 'firebase/firestore/lite'
-
-//firebase database config file
+import firebase from "firebase/app";
+import "firebase/firestore"
 const firebaseConfig = {
     apiKey: "AIzaSyBY6nmhw256OIJLw5L4fMtOpKzy6o45L2k",
     authDomain: "vue-blog-system-1d796.firebaseapp.com",
@@ -12,9 +10,9 @@ const firebaseConfig = {
   };
 
 // init firebase
-const firebase = initializeApp(firebaseConfig);
+firebase.initializeApp(firebaseConfig)
 
 // database setup
-const db = getFirestore(firebase);
+let db=firebase.firestore();
 
 export {db};
